@@ -3,3 +3,13 @@
 ################################################################################
 
 /.vs
+/ExchangeActiveSync/Source/Common/obj/Debug/.NETFramework,Version=v4.5.1.AssemblyAttributes.cs
+/ExchangeActiveSync/Source/Common/obj/Debug/Common.csprojAssemblyReference.cache
+/ExchangeActiveSync/Source/Common/obj/Release
+/ExchangeActiveSync/Source/MS-ASAIRS
+/ExchangeActiveSync/Source/MS-ASCAL
+/ExchangeActiveSync/Source
+/ExchangeMAPI/Source
+/ExchangeWebServices/Source
+/FileSyncandWOPI/Source
+/SharePoint/Source
