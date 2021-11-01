@@ -3,3 +3,8 @@
 ################################################################################
 
 /.vs
+/ExchangeActiveSync/Source
+/ExchangeMAPI/Source
+/ExchangeWebServices/Source
+/FileSyncandWOPI/Source
+/SharePoint/Source

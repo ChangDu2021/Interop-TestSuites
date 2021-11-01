@@ -85,7 +85,7 @@
     <None Include="Resources\LargeData.one" />
     <None Include="Resources\OneWithFileData.one" />
     <None Include="Resources\OneWithoutFileData.one" />
-    <None Include="Resources\Open Notebook.onetoc2" />    
+    <None Include="Resources\Open Notebook.onetoc2" /> 
   </ItemGroup>
   <ItemGroup>
     <Content Include="MS-ONESTORE_RequirementSpecification.xml" />
