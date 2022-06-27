@@ -38,7 +38,7 @@
         [TestCategory("MSOXWSCONT"), TestMethod()]
         public void MSOXWSCONT_S07_TC01_SetUserPhotoSuccess()
         {
-            Site.Assume.IsTrue(Common.IsRequirementEnabled(1275114, this.Site), "Implementation does support the SetUserPhoto operation.");
+            Site.Assume.IsTrue(Common.IsRequirementEnabled(1275118, this.Site), "Implementation does support the SetUserPhoto operation.");
 
             #region Step 1: Call SetUserPhoto operation to set a photo to specific user.
             string emailAddress = string.Format("{0}@{1}", Common.GetConfigurationPropertyValue("ContactUserName", this.Site), Common.GetConfigurationPropertyValue("Domain", this.Site));
@@ -70,12 +70,12 @@
                 @"[In SetUserPhoto] [The protocol client sends a SetUserPhotoSoapIn request WSDL message] and the protocol server responds with a SetUserPhotoSoapOut response WSDL message");
 
             // Add the debug information
-            this.Site.Log.Add(LogEntryKind.Debug, "Verify MS-OXWSCONT_R1275114");
+            this.Site.Log.Add(LogEntryKind.Debug, "Verify MS-OXWSCONT_R1275118");
 
-            // Verify MS-OXWSCONT requirement: MS-OXWSCONT_R1275114
+            // Verify MS-OXWSCONT requirement: MS-OXWSCONT_R1275118
             this.Site.CaptureRequirementIfIsNotNull(
                 setUserPhotoResponse,
-                1275114,
+                1275118,
                 @"[In Appendix C: Product Behavior] Implementation does support the SetUserPhoto operation. (Exchange 2016 and above follow this behavior.)");
             #endregion
 
@@ -114,7 +114,7 @@
         [TestCategory("MSOXWSCONT"), TestMethod()]
         public void MSOXWSCONT_S07_TC02_GetUserPhotoSizeTypeEnumValue()
         {
-            Site.Assume.IsTrue(Common.IsRequirementEnabled(1275114, this.Site), "Implementation does not support the SetUserPhoto operation.");
+            Site.Assume.IsTrue(Common.IsRequirementEnabled(1275118, this.Site), "Implementation does not support the SetUserPhoto operation.");
 
             #region Step 1: Call SetUserPhoto operation to set a photo to specific user.
             string emailAddress = string.Format("{0}@{1}", Common.GetConfigurationPropertyValue("ContactUserName", this.Site), Common.GetConfigurationPropertyValue("Domain", this.Site));
@@ -301,7 +301,7 @@
         [TestCategory("MSOXWSCONT"), TestMethod()]
         public void MSOXWSCONT_S07_TC03_ChangeUserPhoto()
         {
-            Site.Assume.IsTrue(Common.IsRequirementEnabled(1275114, this.Site), "Implementation does not support the SetUserPhoto operation.");
+            Site.Assume.IsTrue(Common.IsRequirementEnabled(1275118, this.Site), "Implementation does not support the SetUserPhoto operation.");
 
             #region Step 1: Call SetUserPhoto operation to set a photo to specific user.
             string emailAddress = string.Format("{0}@{1}", Common.GetConfigurationPropertyValue("ContactUserName", this.Site), Common.GetConfigurationPropertyValue("Domain", this.Site));
