@@ -381,8 +381,10 @@ namespace Microsoft.Protocols.TestSuites.MS_OXWSCONT
                 PostalAddressIndex = PhysicalAddressIndexType.Business,
                 PostalAddressIndexSpecified = true,
                 WeddingAnniversary = Convert.ToDateTime("2010-10-10 11:59:00"),
-                WeddingAnniversaryLocal = DateTime.UtcNow.ToString("2010-10-10 11:59:00"),
-                WeddingAnniversarySpecified = true
+                WeddingAnniversarySpecified = true,
+                WeddingAnniversaryLocal = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(2010, 10, 10)),
+                WeddingAnniversaryLocalSpecified = true,
+
             };
 
             if (Common.IsRequirementEnabled(1275008, this.Site))
@@ -1008,6 +1010,22 @@ namespace Microsoft.Protocols.TestSuites.MS_OXWSCONT
                 requestContactItem.WeddingAnniversary,
                 responseContactItem.WeddingAnniversary,
                 79,
+                @"[In t:ContactItemType Complex Type] WeddingAnniversary element: Contains the wedding anniversary date of a contact (2).");
+
+            // Add the debug information
+            Site.Log.Add(LogEntryKind.Debug, "Verify MS-OXWSCONT_R7901");
+
+            // Verify MS-OXWSCONT requirement: MS-OXWSCONT_R78
+            Site.CaptureRequirementIfIsTrue(
+                responseContactItem.WeddingAnniversaryLocalSpecified,
+                7901,
+                @"[In t:ContactItemType Complex Type] The type of the element of WeddingAnniversary is xs:dateTime");
+
+            // Verify MS-OXWSCONT requirement: MS-OXWSCONT_R7902
+            this.Site.CaptureRequirementIfAreEqual<DateTime>(
+                requestContactItem.WeddingAnniversaryLocal,
+                responseContactItem.WeddingAnniversaryLocal,
+                7902,
                 @"[In t:ContactItemType Complex Type] WeddingAnniversary element: Contains the wedding anniversary date of a contact (2).");
 
             // Add the debug information

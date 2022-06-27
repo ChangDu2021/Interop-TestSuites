@@ -10608,6 +10608,10 @@ namespace Microsoft.Protocols.TestSuites.Common
 
         private bool weddingAnniversaryFieldSpecified;
 
+        private System.DateTime weddingAnniversaryLocalField;
+
+        private bool weddingAnniversaryLocalFieldSpecified;
+
         private bool hasPictureField;
 
         private bool hasPictureFieldSpecified;
@@ -11232,6 +11236,19 @@ namespace Microsoft.Protocols.TestSuites.Common
         }
 
         /// <remarks/>
+        public System.DateTime WeddingAnniversaryLocal
+        {
+            get
+            {
+                return this.weddingAnniversaryLocalField;
+            }
+            set
+            {
+                this.weddingAnniversaryLocalField = value;
+            }
+        }
+
+        /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool WeddingAnniversarySpecified
         {
@@ -11242,6 +11259,20 @@ namespace Microsoft.Protocols.TestSuites.Common
             set
             {
                 this.weddingAnniversaryFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool WeddingAnniversaryLocalSpecified
+        {
+            get
+            {
+                return this.weddingAnniversaryLocalFieldSpecified;
+            }
+            set
+            {
+                this.weddingAnniversaryLocalFieldSpecified = value;
             }
         }
 
@@ -12217,8 +12248,6 @@ namespace Microsoft.Protocols.TestSuites.Common
                 this.personIdField = value;
             }
         }
-
-        public string WeddingAnniversaryLocal { get; set; }
     }
 
     /// <remarks/>
