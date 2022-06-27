@@ -10566,6 +10566,10 @@ namespace Microsoft.Protocols.TestSuites.Common
 
         private bool birthdayFieldSpecified;
 
+        private System.DateTime birthdayLocalField;
+
+        private bool birthdayLocalFieldSpecified;
+
         private string businessHomePageField;
 
         private string[] childrenField;
@@ -10949,6 +10953,18 @@ namespace Microsoft.Protocols.TestSuites.Common
             }
         }
 
+        public System.DateTime BirthdayLocal
+        {
+            get
+            {
+                return this.birthdayLocalField;
+            }
+            set
+            {
+                this.birthdayLocalField = value;
+            }
+        }
+ 
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool BirthdaySpecified
@@ -10960,6 +10976,18 @@ namespace Microsoft.Protocols.TestSuites.Common
             set
             {
                 this.birthdayFieldSpecified = value;
+            }
+        }
+
+        public bool BirthdayLocalSpecified
+        {
+            get
+            {
+                return this.birthdayLocalFieldSpecified;
+            }
+            set
+            {
+                this.birthdayLocalFieldSpecified = value;
             }
         }
 
@@ -12189,6 +12217,8 @@ namespace Microsoft.Protocols.TestSuites.Common
                 this.personIdField = value;
             }
         }
+
+        public string WeddingAnniversaryLocal { get; set; }
     }
 
     /// <remarks/>
@@ -19538,6 +19568,10 @@ namespace Microsoft.Protocols.TestSuites.Common
         contactsBirthday,
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("contacts:BirthdayLocal")]
+        contactsBirthdayLocal,
+
+        /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("contacts:BusinessHomePage")]
         contactsBusinessHomePage,
 
@@ -20104,6 +20138,7 @@ namespace Microsoft.Protocols.TestSuites.Common
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("person:Birthday")]
         personBirthday,
+
 
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("person:Hometown")]
