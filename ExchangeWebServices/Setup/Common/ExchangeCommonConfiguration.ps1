@@ -100,7 +100,6 @@ function GetExchangeServerVersion
     $ExchangeServer2010             = "$global:Exchange2010",   "14.3.123.4",    "SP3"
     $ExchangeServer2013             = "$global:Exchange2013",   "15.0.847.32",   "SP1"
     $ExchangeServer2016             = "$global:Exchange2016",     "15.1.280.0",   ""
-    $ExchangeServer2019             = "$global:Exchange2019",     "15.2.986.5 ",   ""
     $ExchangeVersion                = "Unknown Version"
     
     OutputText "Trying to get the Exchange server version; please wait ..."
@@ -147,16 +146,7 @@ function GetExchangeServerVersion
             $recommendMinorVersion = $ExchangeServer2016[2]
             $isRecommendMinorVersion = CompareExchangeMinorVersion $version $recommendVersion
             break
-        }
-        if($item.DisplayName.StartsWith($ExchangeServer2019[0]))
-        {
-            $version = $item.DisplayVersion
-            $ExchangeVersion = $ExchangeServer2019[0]
-            $recommendVersion = $ExchangeServer2019[1]
-            $recommendMinorVersion = $ExchangeServer2019[2]
-            $isRecommendMinorVersion = CompareExchangeMinorVersion $version $recommendVersion
-            break
-        }       
+        }      
     }
     if ($ExchangeVersion -eq "Unknown Version")
     {

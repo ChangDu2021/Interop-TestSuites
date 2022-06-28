@@ -83,7 +83,6 @@ $Exchange2013                 = "Microsoft Exchange Server 2013"
 $Exchange2010                 = "Microsoft Exchange Server 2010"
 $Exchange2007                 = "Microsoft Exchange Server 2007"
 $Exchange2016                 = "Microsoft Exchange Server 2016"
-$Exchange2019                 = "Microsoft Exchange Server 2019"
 
 #-----------------------------------------------------------------------------------
 # <summary>
