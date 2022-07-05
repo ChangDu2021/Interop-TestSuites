@@ -330,7 +330,9 @@ namespace Microsoft.Protocols.TestSuites.MS_OXWSCONT
                         this.Site,
                         "AssistantName"),
                 Birthday = Convert.ToDateTime("1988-10-16 11:59:00"),
+                BirthdayLocal = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1988, 10, 16)),
                 BirthdaySpecified = true,
+                BirthdayLocalSpecified = true,
                 BusinessHomePage = "http://www.microsoft.com",
                 JobTitle = Common.GenerateResourceName(
                         this.Site,
@@ -379,35 +381,38 @@ namespace Microsoft.Protocols.TestSuites.MS_OXWSCONT
                 PostalAddressIndex = PhysicalAddressIndexType.Business,
                 PostalAddressIndexSpecified = true,
                 WeddingAnniversary = Convert.ToDateTime("2010-10-10 11:59:00"),
-                WeddingAnniversarySpecified = true
+                WeddingAnniversarySpecified = true,
+                WeddingAnniversaryLocal = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(2010, 10, 10)),
+                WeddingAnniversaryLocalSpecified = true,
+
             };
 
-            if (Common.IsRequirementEnabled(1275004, this.Site))
+            if (Common.IsRequirementEnabled(1275008, this.Site))
             {
                 item.AccountName = Common.GenerateResourceName(this.Site, "AccountName");
             }
 
-            if (Common.IsRequirementEnabled(1275006, this.Site))
+            if (Common.IsRequirementEnabled(1275010, this.Site))
             {
                 item.IsAutoUpdateDisabledSpecified = true;
             }
 
-            if (Common.IsRequirementEnabled(1275008, this.Site))
+            if (Common.IsRequirementEnabled(1275012, this.Site))
             {
                 item.Comment = Common.GenerateResourceName(this.Site, "Comment");
             }
 
-            if (Common.IsRequirementEnabled(1275014, this.Site))
+            if (Common.IsRequirementEnabled(1275018, this.Site))
             {
                 item.Gender = "Female";
             }
 
-            if (Common.IsRequirementEnabled(1275026, this.Site))
+            if (Common.IsRequirementEnabled(1275030, this.Site))
             {
                 item.SourceId = Common.GenerateResourceName(this.Site, "SourceId");
             }
 
-            if (Common.IsRequirementEnabled(1275032, this.Site))
+            if (Common.IsRequirementEnabled(1275036, this.Site))
             {
                 item.Urls = new ContactUrlDictionaryEntryType[]
                 {
@@ -422,7 +427,7 @@ namespace Microsoft.Protocols.TestSuites.MS_OXWSCONT
                 };
             }
 
-            if (Common.IsRequirementEnabled(1275034, this.Site))
+            if (Common.IsRequirementEnabled(1275038, this.Site))
             {
                 item.CidSpecified = true;
                 item.Cid = 1;
@@ -433,7 +438,7 @@ namespace Microsoft.Protocols.TestSuites.MS_OXWSCONT
                 item.SkypeId = Common.GenerateResourceName(this.Site, "SkypeId");
             }
 
-            if (Common.IsRequirementEnabled(1275044, this.Site))
+            if (Common.IsRequirementEnabled(1275048, this.Site))
             {
                 item.YomiNickname = Common.GenerateResourceName(this.Site, "YomiNickname");
             }
@@ -799,6 +804,25 @@ namespace Microsoft.Protocols.TestSuites.MS_OXWSCONT
                 @"[In t:ContactItemType Complex Type] Birthday element: Represents the birthday of the contact (2).");
 
             // Add the debug information
+            Site.Log.Add(LogEntryKind.Debug, "Verify MS-OXWSCONT_R4701");
+            
+            // Verify MS-OXWSCONT requirement: MS-OXWSCONT_R4701
+            Site.CaptureRequirementIfIsTrue(
+                responseContactItem.BirthdayLocalSpecified,
+                4701,
+                @"[In t:ContactItemType Complex Type] The type of the element of BirthdayLocal is xs:dateTime.");
+
+            // Add the debug information
+            this.Site.Log.Add(LogEntryKind.Debug, "Verify MS-OXWSCONT_R4702");
+
+            // Verify MS-OXWSCONT requirement: MS-OXWSCONT_R47
+            this.Site.CaptureRequirementIfAreEqual<DateTime>(
+                requestContactItem.BirthdayLocal,
+                responseContactItem.BirthdayLocal,
+                4702,
+                @"[In t:ContactItemType Complex Type] The type of the element of BusinessHomePage is xs:anyURI [XMLSCHEMA2].");
+
+            // Add the debug information
             Site.Log.Add(LogEntryKind.Debug, "Verify MS-OXWSCONT_R56");
 
             // Verify MS-OXWSCONT requirement: MS-OXWSCONT_R56
@@ -989,6 +1013,22 @@ namespace Microsoft.Protocols.TestSuites.MS_OXWSCONT
                 @"[In t:ContactItemType Complex Type] WeddingAnniversary element: Contains the wedding anniversary date of a contact (2).");
 
             // Add the debug information
+            Site.Log.Add(LogEntryKind.Debug, "Verify MS-OXWSCONT_R7901");
+
+            // Verify MS-OXWSCONT requirement: MS-OXWSCONT_R78
+            Site.CaptureRequirementIfIsTrue(
+                responseContactItem.WeddingAnniversaryLocalSpecified,
+                7901,
+                @"[In t:ContactItemType Complex Type] The type of the element of WeddingAnniversary is xs:dateTime");
+
+            // Verify MS-OXWSCONT requirement: MS-OXWSCONT_R7902
+            this.Site.CaptureRequirementIfAreEqual<DateTime>(
+                requestContactItem.WeddingAnniversaryLocal,
+                responseContactItem.WeddingAnniversaryLocal,
+                7902,
+                @"[In t:ContactItemType Complex Type] WeddingAnniversary element: Contains the wedding anniversary date of a contact (2).");
+
+            // Add the debug information
             Site.Log.Add(LogEntryKind.Debug, "Verify MS-OXWSCONT_R22");
 
             // Verify MS-OXWSCONT requirement: MS-OXWSCONT_R22
@@ -1032,7 +1072,7 @@ namespace Microsoft.Protocols.TestSuites.MS_OXWSCONT
 
             this.VerifylPhysicalAddressDictionaryTypeComplexType(responseContactItem.PhysicalAddresses, requestContactItem.PhysicalAddresses);
 
-            if (Common.IsRequirementEnabled(1275084, this.Site))
+            if (Common.IsRequirementEnabled(1275088, this.Site))
             {
                 this.VerifyContactUrlDictionaryTypeComplexType(responseContactItem.Urls, requestContactItem.Urls);
             }

@@ -146,7 +146,7 @@ function GetExchangeServerVersion
             $recommendMinorVersion = $ExchangeServer2016[2]
             $isRecommendMinorVersion = CompareExchangeMinorVersion $version $recommendVersion
             break
-        }       
+        }      
     }
     if ($ExchangeVersion -eq "Unknown Version")
     {
